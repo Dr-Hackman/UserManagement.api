@@ -41,9 +41,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`) VALUES
-(42, 'Marck', 'marck 1', 'email'),
-(28, 'tesdddt1', 'tes1t', 'test77'),
-(27, 'tesdddt1', 'tes1t', 'test77');
+(1, 'Marck', 'marck 1', 'email'),
+(2, 'tesdddt1', 'tes1t', 'test77'),
+(3, 'tesdddt1', 'tes1t', 'test77');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

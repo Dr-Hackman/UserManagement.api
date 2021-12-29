@@ -15,7 +15,15 @@ export default {
 
     getItemById : (req, res) => {
         let id = req.params.userId;
-        res.send('ok')
+        let sqlQuery = "SELECT * FROM users WHERE id=" + id;
+        sql.query(sqlQuery, (err, result) => {
+            if (err) throw err;
+            if (result.length) { 
+                console.log("Users: ", result);
+                res.send(result[0]);
+            }
+            res.send("User with the given id does note exist");
+        });
     },
 
     create : (req, res) => {
@@ -32,14 +40,14 @@ export default {
 
     updateItemById : (req, res) => {
         let newUser = new user(req.body);
-        let id = req.params.id;
-        let sqlQuery = "UPDATE users SET firstName = " + newUser.firstName + ",lastName = " + 
-        newUser.lastName + ",email =" + newUser.email + "WHERE id = " + id;
+        let id = req.params.userId;
+        let sqlQuery = "UPDATE users SET firstName = '" + newUser.firstName + "',lastName = '" + 
+        newUser.lastName + "',email ='" + newUser.email + "'WHERE id = " + id;
         sql.query(sqlQuery, (err, result) => {
             if (err) throw err;
             if (result.affectedRows == 0) {
-                console.log("Upade not made");
-                return;
+                console.log("Upade not made, id do not exist");
+                res.send("Upade not made");
             }
             console.log("Users: ", result);
             res.send(result);
@@ -47,7 +55,17 @@ export default {
     },
 
     deleteItemById : (req, res) => {
-
+        let id = req.params.userId;
+        let sqlQuery = "DELETE FROM users WHERE id=" + id;
+        sql.query(sqlQuery, (err, result) => {
+            if (err) throw err;
+            if (result.affectedRows == 0) {
+                console.log("Delete not made, id do not exist");
+                res.send("Delete not made");
+            }
+            console.log("User deleted: ", id);
+            res.send(result);
+        });
     }
 
 }
