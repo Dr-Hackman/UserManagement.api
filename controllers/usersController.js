@@ -21,6 +21,7 @@ export default {
             if (result.length) { 
                 console.log("Users: ", result);
                 res.send(result[0]);
+                return;
             }
             res.send("User with the given id does note exist");
         });
@@ -48,6 +49,7 @@ export default {
             if (result.affectedRows == 0) {
                 console.log("Upade not made, id do not exist");
                 res.send("Upade not made");
+                return;
             }
             console.log("Users: ", result);
             res.send(result);
@@ -62,6 +64,7 @@ export default {
             if (result.affectedRows == 0) {
                 console.log("Delete not made, id do not exist");
                 res.send("Delete not made");
+                return;
             }
             console.log("User deleted: ", id);
             res.send(result);
