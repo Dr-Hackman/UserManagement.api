@@ -14,7 +14,7 @@ export default {
     },
 
     getItemById : (req, res) => {
-        let id = req.params.id;
+        let id = req.params.userid;
         res.send('ok')
     },
 
@@ -44,6 +44,10 @@ export default {
             console.log("Users: ", result);
             res.send(result);
         });
+    },
+
+    deleteItemById : (req, res) => {
+        
     }
 
 }

@@ -6,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use('/', usersRoutes);
+app.use('/api/v1', usersRoutes);
 
 app.listen(5000, () => console.log('Server started on PORT 5000'));
 

@@ -6,10 +6,10 @@ const router = express.Router();
 
 router.get("/users", userController.getAllUsers);
 
-router.get("/users?id", userController.getItemById );
+router.get("/users/:userid", userController.getItemById );
 
 router.post('/users', userController.create);
 
-router.put('/users:id', userController.updateItemById);
+router.put('/users/:id', userController.updateItemById);
 
 export default  router;
